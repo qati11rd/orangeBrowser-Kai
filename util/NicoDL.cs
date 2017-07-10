@@ -21,33 +21,18 @@ namespace orangeBrowser_Kai.util
 
 	class ProgressionArgs : EventArgs
 	{
-		public long DownloadedSize
-		{
-			get;
-			set;
-		}
-		public long VideoSize
-		{
-			get;
-			set;
-		}
-		public string Title
-		{
-			get;
-			set;
-		}
-		public Mode Mode
-		{
-			get;
-			set;
-		}
+		public long DownloadedSize;
+		public long VideoSize;
+		public string Title;
+
+		public Mode Mode;
 
 		public ProgressionArgs()
 		{
 		}
 	}
 
-	class Niconico
+	class NicoDL
 	{
 		private static readonly Encoding _niconicoEncode = Encoding.UTF8;
 		private readonly CookieContainer _cookie = new CookieContainer();
@@ -55,7 +40,7 @@ namespace orangeBrowser_Kai.util
 		public event EventHandler<ProgressionArgs> Progression;
 		public event EventHandler<ProgressionArgs> Completed;
 
-		public Niconico()
+		public NicoDL()
 		{
 		}
 
@@ -90,12 +75,14 @@ namespace orangeBrowser_Kai.util
 
 			var buff = _niconicoEncode.GetBytes(string.Format("mail={0}&password={1}", mail, SecureStringToString(password)));
 			req.ContentLength = buff.Length;
+
 			using (var stream = req.GetRequestStream())
 			{
 				stream.Write(buff, 0, buff.Length);
 			}
 
 			req.GetResponse().Close();
+
 			if (_cookie.Count == 0)
 			{
 				throw new Exception("ログインエラー");
@@ -139,12 +126,14 @@ namespace orangeBrowser_Kai.util
 
 				Save(stream, filePath, progression);
 			}
+
 			return true;
 		}
 
 		private static void FillVideoSize(ProgressionArgs progression, Dictionary<string, string> thumbInfo)
 		{
 			var size = thumbInfo["size_high"];
+
 			if (progression.Mode == Mode.Low)
 			{
 				size = thumbInfo["size_low"];
@@ -158,6 +147,7 @@ namespace orangeBrowser_Kai.util
 			var req = (HttpWebRequest)WebRequest.Create(url);
 			req.CookieContainer = _cookie;
 			req.GetResponse().Close();
+
 			return;
 		}
 
@@ -172,6 +162,7 @@ namespace orangeBrowser_Kai.util
 
 			byte[] buff = new byte[buffSize];
 			var readSize = stream.Read(buff, 0, 3);
+
 			if (buff[0] == 'F' && buff[1] == 'L' && buff[2] == 'V')
 			{
 				filePath += ".flv";
@@ -180,12 +171,14 @@ namespace orangeBrowser_Kai.util
 			{
 				filePath += ".mp4";
 			}
-			var tempFilePath = Path.GetTempFileName();
 
+			var tempFilePath = Path.GetTempFileName();
 			long totalReadSize = readSize;
+
 			using (var outStream = File.OpenWrite(tempFilePath))
 			{
 				outStream.Write(buff, 0, 3);
+
 				while (readSize != 0)
 				{
 					readSize = stream.Read(buff, 0, buff.Length);
@@ -202,6 +195,7 @@ namespace orangeBrowser_Kai.util
 			{
 				File.Delete(filePath);
 			}
+
 			File.Move(tempFilePath, filePath);
 		}
 
@@ -229,17 +223,20 @@ namespace orangeBrowser_Kai.util
 			var req = (HttpWebRequest)WebRequest.Create("http://flapi.nicovideo.jp/api/getflv/" + number);
 			req.CookieContainer = _cookie;
 			var resText = req.GetResponse().ReadToEnd(_niconicoEncode);
+
 			return ConvertDic(resText);
 		}
 
 		static Dictionary<string, string> ConvertDic(string source)
 		{
 			var webData = new Dictionary<string, string>();
+
 			foreach (var item in source.Split('&'))
 			{
 				var values = item.Split('=');
 				webData.Add(values[0], Uri.UnescapeDataString(values[1]));
 			}
+
 			return webData;
 		}
 
