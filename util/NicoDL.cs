@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Net;
 using System.IO;
-using System.Security;
+using System.Net;
 using System.Runtime.InteropServices;
+using System.Security;
+using System.Text;
 using System.Xml;
 
 // 元ソース uri: http://d.hatena.ne.jp/fezg00/20111115/1321348924
@@ -32,6 +31,25 @@ namespace orangeBrowser_Kai.util
 		}
 	}
 
+	class FileStreamArgs : EventArgs
+	{
+		public FileStream FileStream;
+
+		public FileStreamArgs()
+		{
+		}
+	}
+
+	class FilePathDecideArgs : EventArgs
+	{
+		public string Value;
+
+		public FilePathDecideArgs(ref string str)
+		{
+			this.Value = str;
+		}
+	}
+
 	class NicoDL
 	{
 		private static readonly Encoding _niconicoEncode = Encoding.UTF8;
@@ -39,6 +57,8 @@ namespace orangeBrowser_Kai.util
 
 		public event EventHandler<ProgressionArgs> Progression;
 		public event EventHandler<ProgressionArgs> Completed;
+		public event EventHandler<FileStreamArgs> StreamWrote;
+		public event EventHandler<FilePathDecideArgs> FilePathDecided;
 
 		public NicoDL()
 		{
@@ -68,12 +88,17 @@ namespace orangeBrowser_Kai.util
 
 		public void Login(string mail, SecureString password)
 		{
+			this.Login(mail, SecureStringToString(password));
+		}
+
+		public void Login(string mail, string password)
+		{
 			var req = (HttpWebRequest)WebRequest.Create("https://secure.nicovideo.jp/secure/login?site=niconico");
 			req.ContentType = "application/x-www-form-urlencoded";
 			req.Method = "POST";
 			req.CookieContainer = _cookie;
 
-			var buff = _niconicoEncode.GetBytes(string.Format("mail={0}&password={1}", mail, SecureStringToString(password)));
+			var buff = _niconicoEncode.GetBytes(string.Format("mail={0}&password={1}", mail, password));
 			req.ContentLength = buff.Length;
 
 			using (var stream = req.GetRequestStream())
@@ -123,6 +148,7 @@ namespace orangeBrowser_Kai.util
 				Path.GetInvalidFileNameChars().ForEach(c => fileName = fileName.Replace(c.ToString(), ""));
 
 				var filePath = Path.Combine(path, fileName);
+				OnFilePathDecide(ref filePath);
 
 				Save(stream, filePath, progression);
 			}
@@ -174,9 +200,11 @@ namespace orangeBrowser_Kai.util
 
 			var tempFilePath = Path.GetTempFileName();
 			long totalReadSize = readSize;
+			FileStreamArgs fileStreamArgs = new FileStreamArgs();
 
 			using (var outStream = File.OpenWrite(tempFilePath))
 			{
+				fileStreamArgs.FileStream = outStream;
 				outStream.Write(buff, 0, 3);
 
 				while (readSize != 0)
@@ -188,6 +216,12 @@ namespace orangeBrowser_Kai.util
 					videoInfo.DownloadedSize = totalReadSize;
 
 					OnProgression(videoInfo);
+					OnStreamWrite(fileStreamArgs);
+
+					if (!outStream.CanWrite)
+					{
+						return;
+					}
 				}
 			}
 
@@ -253,6 +287,24 @@ namespace orangeBrowser_Kai.util
 			if (Completed != null)
 			{
 				Completed(this, progressionArgs);
+			}
+		}
+
+		protected void OnStreamWrite(FileStreamArgs fileStreamArgs)
+		{
+			if (StreamWrote != null)
+			{
+				StreamWrote(this, fileStreamArgs);
+			}
+		}
+
+		protected void OnFilePathDecide(ref string filePath)
+		{
+			FilePathDecideArgs args = new FilePathDecideArgs(ref filePath);
+
+			if (FilePathDecided != null)
+			{
+				FilePathDecided(this, args);
 			}
 		}
 	}
