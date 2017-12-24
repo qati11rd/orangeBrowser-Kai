@@ -86,7 +86,7 @@ namespace orangeBrowser_Kai.util.Downloaders
 		{
 			var now = DateTime.Now;
 
-			if (!IsEconomy(now))
+			if (!IsEconomyTime(now))
 			{
 				return 1;
 			}
@@ -94,7 +94,7 @@ namespace orangeBrowser_Kai.util.Downloaders
 			return (int)now.AddHours(2).AddMinutes(1).Subtract(now).TotalSeconds;
 		}
 
-		private bool IsEconomy(DateTime now)
+		public static bool IsEconomyTime(DateTime now)
 		{
 			if (IsEconomyDay(now))
 			{
@@ -106,7 +106,7 @@ namespace orangeBrowser_Kai.util.Downloaders
 			}
 		}
 
-		private bool IsEconomyDay(DateTime now)
+		private static bool IsEconomyDay(DateTime now)
 		{
 			switch (now.DayOfWeek)
 			{
