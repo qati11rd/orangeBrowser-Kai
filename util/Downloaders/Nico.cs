@@ -86,7 +86,8 @@ namespace orangeBrowser_Kai.util.Downloaders
 		{
 			var now = DateTime.Now;
 
-			if (!IsEconomyTime(now))
+			// エコノミー扱いじゃなければ1秒後
+			if (!IsEconomyTime(now, Settings.Default.Others_AmbiguousHoliday))
 			{
 				return 1;
 			}
@@ -94,9 +95,9 @@ namespace orangeBrowser_Kai.util.Downloaders
 			return (int)now.AddHours(2).AddMinutes(1).Subtract(now).TotalSeconds;
 		}
 
-		public static bool IsEconomyTime(DateTime now)
+		public static bool IsEconomyTime(DateTime now, bool useAmbiguous)
 		{
-			if (IsEconomyDay(now))
+			if (IsEconomyDay(now, useAmbiguous))
 			{
 				return now.Hour < 2 || now.Hour >= 12;
 			}
@@ -106,7 +107,7 @@ namespace orangeBrowser_Kai.util.Downloaders
 			}
 		}
 
-		private static bool IsEconomyDay(DateTime now)
+		private static bool IsEconomyDay(DateTime now, bool useAmbiguous)
 		{
 			switch (now.DayOfWeek)
 			{
@@ -127,7 +128,7 @@ namespace orangeBrowser_Kai.util.Downloaders
 				return now.Day <= 3;
 			}
 
-			return now.IsPublicHoliday(true);
+			return now.IsPublicHoliday(useAmbiguous);
 		}
 	}
 }

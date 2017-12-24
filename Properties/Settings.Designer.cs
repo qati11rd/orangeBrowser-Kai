@@ -154,5 +154,17 @@ namespace orangeBrowser_Kai.Properties {
                 this["Nico_DefaultPath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Others_AmbiguousHoliday {
+            get {
+                return ((bool)(this["Others_AmbiguousHoliday"]));
+            }
+            set {
+                this["Others_AmbiguousHoliday"] = value;
+            }
+        }
     }
 }
