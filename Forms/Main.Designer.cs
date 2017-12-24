@@ -1,6 +1,6 @@
 ﻿namespace orangeBrowser_Kai
 {
-	partial class FormMain
+	partial class Main
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -77,7 +77,7 @@
 			this.webBrowser.Size = new System.Drawing.Size(284, 239);
 			this.webBrowser.TabIndex = 3;
 			// 
-			// FormMain
+			// Main
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -86,7 +86,7 @@
 			this.Controls.Add(this.buttonGo);
 			this.Controls.Add(this.textBoxUrlBar);
 			this.Controls.Add(this.buttonSettings);
-			this.Name = "FormMain";
+			this.Name = "Main";
 			this.Text = "orangeBrowser-Kai";
 			this.UseWaitCursor = true;
 			this.ResumeLayout(false);

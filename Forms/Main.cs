@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace orangeBrowser_Kai
 {
-	public partial class FormMain : Form
+	public partial class Main : Form
 	{
-		public FormMain()
+		public Main()
 		{
 			InitializeComponent();
 		}
