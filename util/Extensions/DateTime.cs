@@ -2,7 +2,7 @@
 
 namespace orangeBrowser_Kai.util
 {
-	static class Extensions
+	static partial class Extensions
 	{
 		public static int GetNthWeek(this DateTime dateTime)
 		{

@@ -57,7 +57,7 @@
     <Compile Include="app\Settings.cs" />
     <Compile Include="util\Downloader.cs" />
     <Compile Include="util\Downloaders\Nico.cs" />
-    <Compile Include="util\Extensions.cs" />
+    <Compile Include="util\Extensions\DateTime.cs" />
     <Compile Include="util\NicoDL.cs" />
     <EmbeddedResource Include="Forms\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
