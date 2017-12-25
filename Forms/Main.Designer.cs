@@ -45,13 +45,17 @@
 			// 
 			// textBoxUrlBar
 			// 
+			this.textBoxUrlBar.AcceptsReturn = true;
+			this.textBoxUrlBar.AllowDrop = true;
 			this.textBoxUrlBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
 									| System.Windows.Forms.AnchorStyles.Right)));
 			this.textBoxUrlBar.Font = new System.Drawing.Font("MS UI Gothic", 12F);
 			this.textBoxUrlBar.Location = new System.Drawing.Point(56, 0);
+			this.textBoxUrlBar.Multiline = true;
 			this.textBoxUrlBar.Name = "textBoxUrlBar";
 			this.textBoxUrlBar.Size = new System.Drawing.Size(201, 23);
 			this.textBoxUrlBar.TabIndex = 1;
+			this.textBoxUrlBar.TextChanged += new System.EventHandler(this.textBoxUrlBar_TextChanged);
 			// 
 			// buttonGo
 			// 
@@ -73,6 +77,8 @@
 			this.webBrowser.Name = "webBrowser";
 			this.webBrowser.Size = new System.Drawing.Size(284, 239);
 			this.webBrowser.TabIndex = 3;
+			this.webBrowser.Url = new System.Uri("about:blank", System.UriKind.Absolute);
+			this.webBrowser.Navigated += new System.Windows.Forms.WebBrowserNavigatedEventHandler(this.webBrowser_Navigated);
 			// 
 			// Main
 			// 
