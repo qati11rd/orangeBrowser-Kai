@@ -42,7 +42,6 @@
 			this.buttonSettings.TabIndex = 0;
 			this.buttonSettings.Text = "Settings";
 			this.buttonSettings.UseVisualStyleBackColor = true;
-			this.buttonSettings.UseWaitCursor = true;
 			// 
 			// textBoxUrlBar
 			// 
@@ -53,7 +52,6 @@
 			this.textBoxUrlBar.Name = "textBoxUrlBar";
 			this.textBoxUrlBar.Size = new System.Drawing.Size(201, 23);
 			this.textBoxUrlBar.TabIndex = 1;
-			this.textBoxUrlBar.UseWaitCursor = true;
 			// 
 			// buttonGo
 			// 
@@ -64,7 +62,6 @@
 			this.buttonGo.TabIndex = 2;
 			this.buttonGo.Text = "Go";
 			this.buttonGo.UseVisualStyleBackColor = true;
-			this.buttonGo.UseWaitCursor = true;
 			// 
 			// webBrowser
 			// 
@@ -88,7 +85,6 @@
 			this.Controls.Add(this.buttonSettings);
 			this.Name = "Main";
 			this.Text = "orangeBrowser-Kai";
-			this.UseWaitCursor = true;
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
