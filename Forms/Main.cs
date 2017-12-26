@@ -21,6 +21,8 @@ namespace orangeBrowser_Kai
 
 		private void InitializeSettings()
 		{
+			Opacity = Settings.Default.Window_Opacity;
+
 			GoTo(Settings.Default.General_HomePage);
 		}
 
@@ -39,7 +41,7 @@ namespace orangeBrowser_Kai
 			}
 		}
 
-		private void GoTo(string url)
+		private void GoTo(string url, bool usingSearch = false)
 		{
 			try
 			{
@@ -49,6 +51,9 @@ namespace orangeBrowser_Kai
 			}
 			catch (Exception)
 			{
+				if (!usingSearch) {
+					GoTo(Formatter.Format.SprintF(Settings.Default.General_SearchPage, url), true);
+				}
 			}
 		}
 	}
