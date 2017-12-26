@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "orangeBrowser-Kai", "orangeBrowser-Kai\orangeBrowser-Kai.csproj", "{3C73608F-B49B-4B5A-8D78-1C5D68AC2E51}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Formatter", "Formatter\Formatter.fsproj", "{0284B803-11F1-4907-ACBD-D8F86C86A9B9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3C73608F-B49B-4B5A-8D78-1C5D68AC2E51}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{3C73608F-B49B-4B5A-8D78-1C5D68AC2E51}.Debug|x86.ActiveCfg = Debug|x86
+		{3C73608F-B49B-4B5A-8D78-1C5D68AC2E51}.Debug|x86.Build.0 = Debug|x86
+		{3C73608F-B49B-4B5A-8D78-1C5D68AC2E51}.Release|Any CPU.ActiveCfg = Release|x86
+		{3C73608F-B49B-4B5A-8D78-1C5D68AC2E51}.Release|x86.ActiveCfg = Release|x86
+		{3C73608F-B49B-4B5A-8D78-1C5D68AC2E51}.Release|x86.Build.0 = Release|x86
+		{0284B803-11F1-4907-ACBD-D8F86C86A9B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0284B803-11F1-4907-ACBD-D8F86C86A9B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0284B803-11F1-4907-ACBD-D8F86C86A9B9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0284B803-11F1-4907-ACBD-D8F86C86A9B9}.Debug|x86.Build.0 = Debug|Any CPU
+		{0284B803-11F1-4907-ACBD-D8F86C86A9B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0284B803-11F1-4907-ACBD-D8F86C86A9B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0284B803-11F1-4907-ACBD-D8F86C86A9B9}.Release|x86.ActiveCfg = Release|Any CPU
+		{0284B803-11F1-4907-ACBD-D8F86C86A9B9}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0F531C44-251C-4802-B96B-FA0AA5C205BA}
+	EndGlobalSection
+EndGlobal
