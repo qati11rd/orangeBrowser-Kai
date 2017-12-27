@@ -46,7 +46,7 @@ namespace orangeBrowser_Kai
 			catch (Exception)
 			{
 				if (!usingSearch) {
-					GoTo(Formatter.Format.SprintF(Settings.Default.General_SearchPage, url), true);
+					GoTo(Formatter.Format.SPrintF(Settings.Default.General_SearchPage, url), true);
 				}
 			}
 		}

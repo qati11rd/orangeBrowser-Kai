@@ -2,7 +2,7 @@
 
 module Format = begin
   /// 変換指定子を用いて文字列を変換する
-  let SprintF style value : string =
+  let SPrintF style value : string =
     // 受け取った書式文字列をPrintFormat型にキャスト
     let f = Printf.StringFormat<_>(style)
     // sprintfで書式変更した結果を返却
