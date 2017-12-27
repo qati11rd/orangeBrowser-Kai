@@ -57,6 +57,7 @@
 			this.textBoxUrlBar.TabIndex = 1;
 			this.textBoxUrlBar.TextChanged += new System.EventHandler(this.textBoxUrlBar_TextChanged);
 			this.textBoxUrlBar.Enter += new System.EventHandler(this.textBoxUrlBar_Enter);
+			this.textBoxUrlBar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxUrlBar_KeyPress);
 			this.textBoxUrlBar.Leave += new System.EventHandler(this.textBoxUrlBar_Leave);
 			// 
 			// buttonGo

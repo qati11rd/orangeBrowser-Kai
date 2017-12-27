@@ -27,14 +27,17 @@ namespace orangeBrowser_Kai
 			textBoxUrlBar.Text = e.Url.AbsoluteUri;
 		}
 
+		private void textBoxUrlBar_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			if (e.KeyChar == '\r' || e.KeyChar == '\n')
+			{
+				GoTo(textBoxUrlBar.Text);
+			}
+		}
+
 		private void textBoxUrlBar_TextChanged(object sender, EventArgs e)
 		{
-			string text = textBoxUrlBar.Text;
-
-			if (text.Contains("\r") || text.Contains("\n"))
-			{
-				GoTo(text.Replace("\r", "").Replace("\n", ""));
-			}
+			textBoxUrlBar.Text = textBoxUrlBar.Text.Replace("\r", "").Replace("\n", "");
 		}
 
 		private void webBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
@@ -54,6 +57,8 @@ namespace orangeBrowser_Kai
 
 		private void GoTo(string url, bool usingSearch = false)
 		{
+			url = url.Replace("\r", "").Replace("\n", "");
+
 			try
 			{
 				webBrowser.Url = new Uri(url);
