@@ -6,6 +6,8 @@ namespace orangeBrowser_Kai
 {
 	public partial class Main : Form
 	{
+		const string HTTPS_ALTER_STR = "[#Secured#]";
+
 		public Main()
 		{
 			InitializeComponent();
@@ -74,7 +76,7 @@ namespace orangeBrowser_Kai
 
 				if (text.StartsWith("https://"))
 				{
-					textBoxUrlBar.Text = text.Replace("https://", "[#Secured#]");
+					textBoxUrlBar.Text = text.Replace("https://", HTTPS_ALTER_STR);
 				}
 				else
 				{
@@ -89,9 +91,9 @@ namespace orangeBrowser_Kai
 			{
 				string text = textBoxUrlBar.Text;
 
-				if (text.StartsWith("[#Secured#]"))
+				if (text.StartsWith(HTTPS_ALTER_STR))
 				{
-					textBoxUrlBar.Text = text.Replace("[#Secured#]", "https://");
+					textBoxUrlBar.Text = text.Replace(HTTPS_ALTER_STR, "https://");
 				}
 				else
 				{
