@@ -17,7 +17,7 @@
     <Setting Name="General_SearchPage" Type="System.String" Scope="User">
       <Value Profile="(Default)">http://www.nicovideo.jp/search/%s</Value>
     </Setting>
-    <Setting Name="General_HideUrl" Type="System.Boolean" Scope="User">
+    <Setting Name="General_HideHttp" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="General_VerifyClose" Type="System.Boolean" Scope="User">

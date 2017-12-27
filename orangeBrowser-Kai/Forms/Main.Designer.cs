@@ -56,6 +56,8 @@
 			this.textBoxUrlBar.Size = new System.Drawing.Size(201, 23);
 			this.textBoxUrlBar.TabIndex = 1;
 			this.textBoxUrlBar.TextChanged += new System.EventHandler(this.textBoxUrlBar_TextChanged);
+			this.textBoxUrlBar.Enter += new System.EventHandler(this.textBoxUrlBar_Enter);
+			this.textBoxUrlBar.Leave += new System.EventHandler(this.textBoxUrlBar_Leave);
 			// 
 			// buttonGo
 			// 
@@ -78,6 +80,7 @@
 			this.webBrowser.Size = new System.Drawing.Size(284, 239);
 			this.webBrowser.TabIndex = 3;
 			this.webBrowser.Url = new System.Uri("about:blank", System.UriKind.Absolute);
+			this.webBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser_DocumentCompleted);
 			this.webBrowser.Navigated += new System.Windows.Forms.WebBrowserNavigatedEventHandler(this.webBrowser_Navigated);
 			// 
 			// Main

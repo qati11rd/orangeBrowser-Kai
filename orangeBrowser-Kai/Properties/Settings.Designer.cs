@@ -86,12 +86,12 @@ namespace orangeBrowser_Kai.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool General_HideUrl {
+        public bool General_HideHttp {
             get {
-                return ((bool)(this["General_HideUrl"]));
+                return ((bool)(this["General_HideHttp"]));
             }
             set {
-                this["General_HideUrl"] = value;
+                this["General_HideHttp"] = value;
             }
         }
         
