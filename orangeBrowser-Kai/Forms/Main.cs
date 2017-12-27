@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using orangeBrowser_Kai.Properties;
+using orangeBrowser_Kai.util;
 
 namespace orangeBrowser_Kai
 {
@@ -37,7 +38,7 @@ namespace orangeBrowser_Kai
 
 		private void textBoxUrlBar_TextChanged(object sender, EventArgs e)
 		{
-			textBoxUrlBar.Text = textBoxUrlBar.Text.Replace("\r", "").Replace("\n", "");
+			textBoxUrlBar.Text = textBoxUrlBar.Text.RemoveControls();
 		}
 
 		private void webBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
@@ -57,7 +58,7 @@ namespace orangeBrowser_Kai
 
 		private void GoTo(string url, bool usingSearch = false)
 		{
-			url = url.Replace("\r", "").Replace("\n", "");
+			url = url.RemoveControls();
 
 			try
 			{

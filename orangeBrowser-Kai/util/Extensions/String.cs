@@ -8,5 +8,18 @@ namespace orangeBrowser_Kai.util
 		public static string ToHankaku(this string str) => KanaEx.ToHankaku(str);
 
 		public static string ToZenkaku(this string str) => KanaEx.ToZenkaku(str);
+
+		public static string RemoveControls(this string str)
+		{
+			return str
+				.Replace("\a", "")
+				.Replace("\b", "")
+				.Replace("\t", "")
+				.Replace("\n", "")
+				.Replace("\v", "")
+				.Replace("\f", "")
+				.Replace("\r", "")
+				.Replace("\0", "");
+		}
 	}
 }
