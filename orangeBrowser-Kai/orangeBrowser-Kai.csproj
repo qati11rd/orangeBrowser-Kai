@@ -78,11 +78,13 @@
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="app\Program.cs" />
+    <Compile Include="lib\kanaxs_ex-1.0.2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="app\Settings.cs" />
     <Compile Include="util\Downloader.cs" />
     <Compile Include="util\Downloaders\Nico.cs" />
     <Compile Include="util\Extensions\DateTime.cs" />
+    <Compile Include="util\Extensions\String.cs" />
     <Compile Include="util\NicoDL.cs" />
     <EmbeddedResource Include="Forms\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
