@@ -69,6 +69,7 @@
 			this.buttonGo.TabIndex = 2;
 			this.buttonGo.Text = "Go";
 			this.buttonGo.UseVisualStyleBackColor = true;
+			this.buttonGo.Click += new System.EventHandler(this.buttonGo_Click);
 			// 
 			// webBrowser
 			// 

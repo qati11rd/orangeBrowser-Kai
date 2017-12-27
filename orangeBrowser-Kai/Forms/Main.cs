@@ -56,6 +56,11 @@ namespace orangeBrowser_Kai
 			HideHttp();
 		}
 
+		private void buttonGo_Click(object sender, EventArgs e)
+		{
+			GoTo(textBoxUrlBar.Text);
+		}
+
 		private void GoTo(string url, bool usingSearch = false)
 		{
 			url = url.RemoveControls();
