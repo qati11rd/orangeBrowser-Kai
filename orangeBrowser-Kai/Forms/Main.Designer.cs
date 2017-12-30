@@ -53,7 +53,7 @@
 			this.textBoxUrlBar.Location = new System.Drawing.Point(56, 0);
 			this.textBoxUrlBar.Multiline = true;
 			this.textBoxUrlBar.Name = "textBoxUrlBar";
-			this.textBoxUrlBar.Size = new System.Drawing.Size(201, 23);
+			this.textBoxUrlBar.Size = new System.Drawing.Size(1101, 23);
 			this.textBoxUrlBar.TabIndex = 1;
 			this.textBoxUrlBar.TextChanged += new System.EventHandler(this.textBoxUrlBar_TextChanged);
 			this.textBoxUrlBar.Enter += new System.EventHandler(this.textBoxUrlBar_Enter);
@@ -63,7 +63,7 @@
 			// buttonGo
 			// 
 			this.buttonGo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonGo.Location = new System.Drawing.Point(257, 0);
+			this.buttonGo.Location = new System.Drawing.Point(1157, 0);
 			this.buttonGo.Name = "buttonGo";
 			this.buttonGo.Size = new System.Drawing.Size(27, 23);
 			this.buttonGo.TabIndex = 2;
@@ -79,7 +79,7 @@
 			this.webBrowser.Location = new System.Drawing.Point(0, 24);
 			this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
 			this.webBrowser.Name = "webBrowser";
-			this.webBrowser.Size = new System.Drawing.Size(284, 239);
+			this.webBrowser.Size = new System.Drawing.Size(1184, 739);
 			this.webBrowser.TabIndex = 3;
 			this.webBrowser.Url = new System.Uri("about:blank", System.UriKind.Absolute);
 			this.webBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser_DocumentCompleted);
@@ -89,7 +89,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(284, 262);
+			this.ClientSize = new System.Drawing.Size(1184, 762);
 			this.Controls.Add(this.webBrowser);
 			this.Controls.Add(this.buttonGo);
 			this.Controls.Add(this.textBoxUrlBar);
@@ -109,4 +109,3 @@
 		private System.Windows.Forms.WebBrowser webBrowser;
 	}
 }
-
