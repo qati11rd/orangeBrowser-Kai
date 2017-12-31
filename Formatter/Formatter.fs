@@ -1,4 +1,6 @@
-﻿namespace Formatter
+﻿// 元ソース uri: https://qiita.com/logikuma/items/fcfa2761d9166ae282d4
+
+namespace Formatter
 
 module Format = begin
   /// 変換指定子を用いて文字列を変換する
