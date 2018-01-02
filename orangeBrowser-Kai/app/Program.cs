@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
+
+using MainForm = orangeBrowser_Kai.Forms.Main;
 
 namespace orangeBrowser_Kai
 {
@@ -15,7 +15,7 @@ namespace orangeBrowser_Kai
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new Main());
+			Application.Run(new MainForm());
 		}
 	}
 }

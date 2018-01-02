@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using orangeBrowser_Kai.Properties;
 using orangeBrowser_Kai.util;
 
-namespace orangeBrowser_Kai
+namespace orangeBrowser_Kai.Forms
 {
 	public partial class Main : Form
 	{

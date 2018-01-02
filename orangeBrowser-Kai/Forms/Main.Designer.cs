@@ -1,4 +1,4 @@
-﻿namespace orangeBrowser_Kai
+﻿namespace orangeBrowser_Kai.Forms
 {
 	partial class Main
 	{
