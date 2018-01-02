@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 using orangeBrowser_Kai.Properties;
 using orangeBrowser_Kai.util;
@@ -44,6 +45,8 @@ namespace orangeBrowser_Kai.Forms
 		private void webBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
 		{
 			HideHttp();
+
+			UpdateTitle();
 		}
 
 		private void textBoxUrlBar_Enter(object sender, EventArgs e)
@@ -111,6 +114,11 @@ namespace orangeBrowser_Kai.Forms
 					textBoxUrlBar.Text = "http://" + text;
 				}
 			}
+		}
+
+		private void UpdateTitle()
+		{
+			Text = webBrowser.DocumentTitle + " - " + Process.GetCurrentProcess().ProcessName;
 		}
 	}
 }
