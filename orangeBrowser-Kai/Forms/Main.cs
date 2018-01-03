@@ -76,7 +76,8 @@ namespace orangeBrowser_Kai.Forms
 			}
 			catch (Exception)
 			{
-				if (!usingSearch) {
+				if (!usingSearch)
+				{
 					GoTo(Formatter.Format.SPrintF(Settings.Default.General_SearchPage, url), true);
 				}
 			}
