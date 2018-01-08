@@ -37,7 +37,7 @@ namespace orangeBrowser_Kai.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("600, 400")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1200, 800")]
         public global::System.Drawing.Size Window_Size {
             get {
                 return ((global::System.Drawing.Size)(this["Window_Size"]));
@@ -50,9 +50,9 @@ namespace orangeBrowser_Kai.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("100")]
-        public double Window_Opacity {
+        public decimal Window_Opacity {
             get {
-                return ((double)(this["Window_Opacity"]));
+                return ((decimal)(this["Window_Opacity"]));
             }
             set {
                 this["Window_Opacity"] = value;
@@ -145,7 +145,7 @@ namespace orangeBrowser_Kai.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("%USERPROFILE%\\Downloads\\%APP_NAME%")]
         public string Nico_DefaultPath {
             get {
                 return ((string)(this["Nico_DefaultPath"]));

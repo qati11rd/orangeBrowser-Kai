@@ -6,9 +6,9 @@
       <Value Profile="(Default)">0, 0</Value>
     </Setting>
     <Setting Name="Window_Size" Type="System.Drawing.Size" Scope="User">
-      <Value Profile="(Default)">600, 400</Value>
+      <Value Profile="(Default)">1200, 800</Value>
     </Setting>
-    <Setting Name="Window_Opacity" Type="System.Double" Scope="User">
+    <Setting Name="Window_Opacity" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">100</Value>
     </Setting>
     <Setting Name="General_HomePage" Type="System.String" Scope="User">
@@ -33,7 +33,7 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="Nico_DefaultPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">%USERPROFILE%\Downloads\%APP_NAME%</Value>
     </Setting>
     <Setting Name="Others_AmbiguousHoliday" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>

@@ -19,7 +19,7 @@ namespace orangeBrowser_Kai.Forms
 
 		private void InitializeSettings()
 		{
-			Opacity = Settings.Default.Window_Opacity;
+			Opacity = (double)Settings.Default.Window_Opacity;
 
 			GoTo(Settings.Default.General_HomePage);
 		}
