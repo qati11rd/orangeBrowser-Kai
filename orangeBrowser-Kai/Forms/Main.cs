@@ -24,7 +24,7 @@ namespace orangeBrowser_Kai.Forms
 		{
 			this.settings = SettingManager.GetInstance();
 
-			this.Opacity = (double)this.settings.GetValue<decimal>("Window_Opacity");
+			this.Opacity = (double)this.settings.GetValue<decimal>("Window_Opacity") / 100;
 
 			GoTo(this.settings.GetValue<string>("General_HomePage"));
 		}
