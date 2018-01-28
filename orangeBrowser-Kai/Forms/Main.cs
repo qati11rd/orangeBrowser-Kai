@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows.Forms;
-using orangeBrowser_Kai.Properties;
 using orangeBrowser_Kai.util;
+
+using SettingForm = orangeBrowser_Kai.Forms.Setting;
 
 namespace orangeBrowser_Kai.Forms
 {
 	public partial class Main : Form
 	{
 		const string HTTPS_ALTER_STR = "[#Secured#]";
+
+		SettingManager settings;
 
 		public Main()
 		{
@@ -19,9 +22,11 @@ namespace orangeBrowser_Kai.Forms
 
 		private void InitializeSettings()
 		{
-			Opacity = (double)Settings.Default.Window_Opacity;
+			settings = SettingManager.GetInstance();
 
-			GoTo(Settings.Default.General_HomePage);
+			Opacity = (double)settings.GetValue<decimal>("Window_Opacity");
+
+			GoTo(settings.GetValue<string>("General_HomePage"));
 		}
 
 		private void webBrowser_Navigated(object sender, WebBrowserNavigatedEventArgs e)
@@ -64,6 +69,13 @@ namespace orangeBrowser_Kai.Forms
 			GoTo(textBoxUrlBar.Text);
 		}
 
+		private void buttonSettings_Click(object sender, EventArgs e)
+		{
+			SettingForm form = new SettingForm();
+
+			form.ShowDialog(this);
+		}
+
 		private void GoTo(string url, bool usingSearch = false)
 		{
 			url = url.RemoveControls();
@@ -78,14 +90,14 @@ namespace orangeBrowser_Kai.Forms
 			{
 				if (!usingSearch)
 				{
-					GoTo(Formatter.Format.SPrintF(Settings.Default.General_SearchPage, url), true);
+					GoTo(Formatter.Format.SPrintF(settings.GetValue<string>("General_SearchPage"), url), true);
 				}
 			}
 		}
 
 		private void HideHttp()
 		{
-			if (Settings.Default.General_HideHttp)
+			if (settings.GetValue<bool>("General_HideHttp"))
 			{
 				string text = textBoxUrlBar.Text;
 
@@ -102,7 +114,7 @@ namespace orangeBrowser_Kai.Forms
 
 		private void ShowHttp()
 		{
-			if (Settings.Default.General_HideHttp)
+			if (settings.GetValue<bool>("General_HideHttp"))
 			{
 				string text = textBoxUrlBar.Text;
 
