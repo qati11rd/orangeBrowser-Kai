@@ -23,7 +23,7 @@ namespace orangeBrowser_Kai.util.Downloaders
 
 		public Nico(DownloadType downloadType, string url, string path) : base(downloadType, url, path)
 		{
-			settings = SettingManager.GetInstance();
+			this.settings = SettingManager.GetInstance();
 
 			this.NicoDL = new NicoDL();
 
@@ -42,8 +42,8 @@ namespace orangeBrowser_Kai.util.Downloaders
 
 			if (success)
 			{
-				this.NicoDL.Login(settings.GetValue<string>("Nico_Mail"), settings.GetValue<string>("Nico_Password"));
-				this.NicoDL.Recode(this.DownloadUrl, settings.GetValue<string>("Nico_DefaultPath"), settings.GetValue<bool>("Nico_AllowLowMode"));
+				this.NicoDL.Login(this.settings.GetValue<string>("Nico_Mail"), this.settings.GetValue<string>("Nico_Password"));
+				this.NicoDL.Recode(this.DownloadUrl, this.settings.GetValue<string>("Nico_DefaultPath"), this.settings.GetValue<bool>("Nico_AllowLowMode"));
 			}
 
 			return success;
@@ -91,7 +91,7 @@ namespace orangeBrowser_Kai.util.Downloaders
 			var now = DateTime.Now;
 
 			// エコノミー扱いじゃなければ1秒後
-			if (!IsEconomyTime(now, settings.GetValue<bool>("Others_AmbiguousHoliday")))
+			if (!IsEconomyTime(now, this.settings.GetValue<bool>("Others_AmbiguousHoliday")))
 			{
 				return 1;
 			}

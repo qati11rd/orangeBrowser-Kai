@@ -22,34 +22,34 @@ namespace orangeBrowser_Kai.Forms
 
 		private void InitializeSettings()
 		{
-			settings = SettingManager.GetInstance();
+			this.settings = SettingManager.GetInstance();
 
-			Opacity = (double)settings.GetValue<decimal>("Window_Opacity");
+			this.Opacity = (double)this.settings.GetValue<decimal>("Window_Opacity");
 
-			GoTo(settings.GetValue<string>("General_HomePage"));
+			GoTo(this.settings.GetValue<string>("General_HomePage"));
 		}
 
 		private void webBrowser_Navigated(object sender, WebBrowserNavigatedEventArgs e)
 		{
-			textBoxUrlBar.Text = e.Url.AbsoluteUri;
+			this.textBoxUrlBar.Text = e.Url.AbsoluteUri;
 		}
 
 		private void textBoxUrlBar_KeyPress(object sender, KeyPressEventArgs e)
 		{
 			if (e.KeyChar == '\r' || e.KeyChar == '\n')
 			{
-				GoTo(textBoxUrlBar.Text);
+				GoTo(this.textBoxUrlBar.Text);
 			}
 		}
 
 		private void textBoxUrlBar_TextChanged(object sender, EventArgs e)
 		{
-			textBoxUrlBar.Text = textBoxUrlBar.Text.RemoveControls();
+			this.textBoxUrlBar.Text = this.textBoxUrlBar.Text.RemoveControls();
 		}
 
 		private void webBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
 		{
-			textBoxUrlBar.DeselectAll();
+			this.textBoxUrlBar.DeselectAll();
 
 			UpdateTitle();
 		}
@@ -66,7 +66,7 @@ namespace orangeBrowser_Kai.Forms
 
 		private void buttonGo_Click(object sender, EventArgs e)
 		{
-			GoTo(textBoxUrlBar.Text);
+			GoTo(this.textBoxUrlBar.Text);
 		}
 
 		private void buttonSettings_Click(object sender, EventArgs e)
@@ -82,56 +82,56 @@ namespace orangeBrowser_Kai.Forms
 
 			try
 			{
-				webBrowser.Url = new Uri(url);
+				this.webBrowser.Url = new Uri(url);
 
-				textBoxUrlBar.Text = url;
+				this.textBoxUrlBar.Text = url;
 			}
 			catch (Exception)
 			{
 				if (!usingSearch)
 				{
-					GoTo(Formatter.Format.SPrintF(settings.GetValue<string>("General_SearchPage"), url), true);
+					GoTo(Formatter.Format.SPrintF(this.settings.GetValue<string>("General_SearchPage"), url), true);
 				}
 			}
 		}
 
 		private void HideHttp()
 		{
-			if (settings.GetValue<bool>("General_HideHttp"))
+			if (this.settings.GetValue<bool>("General_HideHttp"))
 			{
-				string text = textBoxUrlBar.Text;
+				string text = this.textBoxUrlBar.Text;
 
 				if (text.StartsWith("https://"))
 				{
-					textBoxUrlBar.Text = text.Replace("https://", HTTPS_ALTER_STR);
+					this.textBoxUrlBar.Text = text.Replace("https://", HTTPS_ALTER_STR);
 				}
 				else
 				{
-					textBoxUrlBar.Text = text.Replace("http://", "");
+					this.textBoxUrlBar.Text = text.Replace("http://", "");
 				}
 			}
 		}
 
 		private void ShowHttp()
 		{
-			if (settings.GetValue<bool>("General_HideHttp"))
+			if (this.settings.GetValue<bool>("General_HideHttp"))
 			{
-				string text = textBoxUrlBar.Text;
+				string text = this.textBoxUrlBar.Text;
 
 				if (text.StartsWith(HTTPS_ALTER_STR))
 				{
-					textBoxUrlBar.Text = text.Replace(HTTPS_ALTER_STR, "https://");
+					this.textBoxUrlBar.Text = text.Replace(HTTPS_ALTER_STR, "https://");
 				}
 				else if (!text.StartsWith("https://"))
 				{
-					textBoxUrlBar.Text = "http://" + text;
+					this.textBoxUrlBar.Text = "http://" + text;
 				}
 			}
 		}
 
 		private void UpdateTitle()
 		{
-			Text = webBrowser.DocumentTitle + " - " + Process.GetCurrentProcess().ProcessName;
+			this.Text = this.webBrowser.DocumentTitle + " - " + Process.GetCurrentProcess().ProcessName;
 		}
 	}
 }

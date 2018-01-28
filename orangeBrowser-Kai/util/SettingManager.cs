@@ -28,11 +28,11 @@ namespace orangeBrowser_Kai.util
 
 		private SettingManager()
 		{
-			settings = new Settings();
-			settings.Reload();
+			this.settings = new Settings();
+			this.settings.Reload();
 
-			originalSettings = new Settings();
-			originalSettings.Reload();
+			this.originalSettings = new Settings();
+			this.originalSettings.Reload();
 		}
 
 		private void UpdateChangedValueList(string key)
@@ -52,42 +52,42 @@ namespace orangeBrowser_Kai.util
 
 		private void SetChangedValue(string key)
 		{
-			if (!changedValueList.Contains(key))
+			if (!this.changedValueList.Contains(key))
 			{
-				changedValueList.Add(key);
+				this.changedValueList.Add(key);
 			}
 		}
 
 		private void RemoveChangedValue(string key)
 		{
-			if (changedValueList.Contains(key))
+			if (this.changedValueList.Contains(key))
 			{
-				changedValueList.Remove(key);
+				this.changedValueList.Remove(key);
 			}
 		}
 
 		public void Save()
 		{
-			settings.Save();
-			originalSettings.Reload();
+			this.settings.Save();
+			this.originalSettings.Reload();
 
-			changedValueList.Clear();
+			this.changedValueList.Clear();
 		}
 
 		public void DiscardChanges()
 		{
-			settings.Reload();
+			this.settings.Reload();
 
-			settings = new Settings();
+			this.settings = new Settings();
 
-			changedValueList.Clear();
+			this.changedValueList.Clear();
 		}
 
 		public void Reset()
 		{
-			settings.Reset();
+			this.settings.Reset();
 
-			foreach(SettingsProperty key in settings.Properties)
+			foreach(SettingsProperty key in this.settings.Properties)
 			{
 				UpdateChangedValueList(key.Name);
 			}
@@ -95,24 +95,24 @@ namespace orangeBrowser_Kai.util
 
 		public bool IsValueChanged()
 		{
-			return changedValueList.Count != 0;
+			return this.changedValueList.Count != 0;
 		}
 
 		public void SetValue<T>(string key, T value)
 		{
-			settings[key] = value;
+			this.settings[key] = value;
 
 			UpdateChangedValueList(key);
 		}
 
 		public T GetValue<T>(string key)
 		{
-			return (T)settings[key];
+			return (T)this.settings[key];
 		}
 
 		private T GetOriginalValue<T>(string key)
 		{
-			return (T)originalSettings[key];
+			return (T)this.originalSettings[key];
 		}
 	}
 }
