@@ -44,7 +44,7 @@ namespace orangeBrowser_Kai.Forms
 
 		private void webBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
 		{
-			HideHttp();
+			textBoxUrlBar.DeselectAll();
 
 			UpdateTitle();
 		}
@@ -110,7 +110,7 @@ namespace orangeBrowser_Kai.Forms
 				{
 					textBoxUrlBar.Text = text.Replace(HTTPS_ALTER_STR, "https://");
 				}
-				else
+				else if (!text.StartsWith("https://"))
 				{
 					textBoxUrlBar.Text = "http://" + text;
 				}
