@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+
 using orangeBrowser_Kai.util;
 
 namespace orangeBrowser_Kai.Forms
@@ -12,18 +13,18 @@ namespace orangeBrowser_Kai.Forms
 
 		public Setting()
 		{
-			InitializeComponent();
+			this.InitializeComponent();
 
-			InitializeSettingValues();
+			this.InitializeSettingValues();
 		}
 
 		private void InitializeSettingValues()
 		{
 			this.settings = SettingManager.GetInstance();
 
-			InitializeFields();
+			this.InitializeFields();
 
-			ResetSettingValues();
+			this.ResetSettingValues();
 		}
 
 		private void InitializeFields()
@@ -35,59 +36,59 @@ namespace orangeBrowser_Kai.Forms
 		{
 			this.settings.DiscardChanges();
 
-			ResetGeneralTabValues();
-			ResetNicoTabValues();
-			ResetWindowTabValues();
+			this.ResetGeneralTabValues();
+			this.ResetNicoTabValues();
+			this.ResetWindowTabValues();
 		}
 
 		private void ResetGeneralTabValues()
 		{
-			ResetTextBoxValue(this.textBoxGeneralHomePage);
-			ResetTextBoxValue(this.textBoxGeneralSearchPage);
-			ResetCheckBoxValue(this.checkBoxGeneralHideHttp);
+			this.ResetTextBoxValue(this.textBoxGeneralHomePage);
+			this.ResetTextBoxValue(this.textBoxGeneralSearchPage);
+			this.ResetCheckBoxValue(this.checkBoxGeneralHideHttp);
 		}
 
 		private void ResetNicoTabValues()
 		{
-			ResetTextBoxValue(this.textBoxNicoMail);
-			ResetTextBoxValue(this.textBoxNicoPassword);
-			ResetCheckBoxValue(this.checkBoxNicoAllowLowMode);
+			this.ResetTextBoxValue(this.textBoxNicoMail);
+			this.ResetTextBoxValue(this.textBoxNicoPassword);
+			this.ResetCheckBoxValue(this.checkBoxNicoAllowLowMode);
 		}
 
 		private void ResetWindowTabValues()
 		{
-			ResetNumericUpDownValue(this.numericUpDownWindowOpacity);
+			this.ResetNumericUpDownValue(this.numericUpDownWindowOpacity);
 		}
 
 		private void buttonOkay_Click(object sender, EventArgs e)
 		{
 			this.settings.Save();
 
-			Close();
+			this.Close();
 		}
 
 		private void buttonCancel_Click(object sender, EventArgs e)
 		{
 			this.settings.DiscardChanges();
 
-			Close();
+			this.Close();
 		}
 
 		private void buttonApply_Click(object sender, EventArgs e)
 		{
 			this.settings.Save();
 
-			UpdateButtonEnabled();
+			this.UpdateButtonEnabled();
 		}
 
 		private void buttonConfirm_Click(object sender, EventArgs e)
 		{
-			Close();
+			this.Close();
 		}
 
 		private void buttonReset_Click(object sender, EventArgs e)
 		{
-			ResetSettingValues();
+			this.ResetSettingValues();
 		}
 
 		private void buttonShowPassword_Click(object sender, EventArgs e)
@@ -133,7 +134,7 @@ namespace orangeBrowser_Kai.Forms
 		{
 			this.settings.SetValue(key, value);
 
-			UpdateButtonEnabled();
+			this.UpdateButtonEnabled();
 		}
 
 		private void UpdateButtonEnabled()

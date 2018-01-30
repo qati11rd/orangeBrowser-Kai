@@ -65,7 +65,7 @@ namespace orangeBrowser_Kai.util
 		{
 			if (this.Status == DownloadStatus.Wait)
 			{
-				return StartBase();
+				return this.StartBase();
 			}
 			else
 			{
@@ -75,19 +75,20 @@ namespace orangeBrowser_Kai.util
 
 		protected virtual bool StartBase()
 		{
-			SetDownloaderArgs();
+			this.SetDownloaderArgs();
 
 			return ChangeStatus(DownloadStatus.Downloading);
 		}
 
 		private void SetDownloaderArgs()
 		{
-			this.DownloaderArgs = new DownloaderArgs();
+			this.DownloaderArgs = new DownloaderArgs
+			{
+				Type = this.Type,
+				Status = this.Status
+			};
 
-			this.DownloaderArgs.Type = this.Type;
-			this.DownloaderArgs.Status = this.Status;
-
-			SetDownloadLambda();
+			this.SetDownloadLambda();
 		}
 
 		protected virtual void SetDownloadLambda()
@@ -100,12 +101,12 @@ namespace orangeBrowser_Kai.util
 
 			if (success)
 			{
-				Timer timer = GetTimer();
+				Timer timer = this.GetTimer();
 
 				// TODO: 予約する
 				this.Timer.Tick += (sender, args) =>
 				{
-					Start();
+					this.Start();
 				};
 			}
 
@@ -119,26 +120,23 @@ namespace orangeBrowser_Kai.util
 
 		public virtual bool Stop()
 		{
-			return ChangeStatus(DownloadStatus.Stopped);
+			return this.ChangeStatus(DownloadStatus.Stopped);
 		}
 
 		public bool Resume()
 		{
-			return Start();
+			return this.Start();
 		}
 
 		protected bool ChangeStatus(DownloadStatus status)
 		{
-			bool canChange = CanChangeStatus(status);
+			bool canChange = this.CanChangeStatus(status);
 
 			if (canChange)
 			{
 				this.Status = status;
 
-				if (this.DownloadStatusChanged != null)
-				{
-					DownloadStatusChanged(this, this.DownloaderArgs);
-				}
+				this.DownloadStatusChanged?.Invoke(this, this.DownloaderArgs);
 			}
 
 			return canChange;

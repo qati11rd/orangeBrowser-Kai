@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows.Forms;
+
 using orangeBrowser_Kai.util;
 
 using SettingForm = orangeBrowser_Kai.Forms.Setting;
@@ -15,9 +16,9 @@ namespace orangeBrowser_Kai.Forms
 
 		public Main()
 		{
-			InitializeComponent();
+			this.InitializeComponent();
 
-			InitializeSettings();
+			this.InitializeSettings();
 		}
 
 		private void InitializeSettings()
@@ -26,7 +27,7 @@ namespace orangeBrowser_Kai.Forms
 
 			this.Opacity = (double)this.settings.GetValue<decimal>("Window_Opacity") / 100;
 
-			GoTo(this.settings.GetValue<string>("General_HomePage"));
+			this.GoTo(this.settings.GetValue<string>("General_HomePage"));
 		}
 
 		private void webBrowser_Navigated(object sender, WebBrowserNavigatedEventArgs e)
@@ -38,7 +39,7 @@ namespace orangeBrowser_Kai.Forms
 		{
 			if (e.KeyChar == '\r' || e.KeyChar == '\n')
 			{
-				GoTo(this.textBoxUrlBar.Text);
+				this.GoTo(this.textBoxUrlBar.Text);
 			}
 		}
 
@@ -51,27 +52,27 @@ namespace orangeBrowser_Kai.Forms
 		{
 			this.textBoxUrlBar.DeselectAll();
 
-			UpdateTitle();
+			this.UpdateTitle();
 		}
 
 		private void textBoxUrlBar_Enter(object sender, EventArgs e)
 		{
-			ShowHttp();
+			this.ShowHttp();
 		}
 
 		private void textBoxUrlBar_Leave(object sender, EventArgs e)
 		{
-			HideHttp();
+			this.HideHttp();
 		}
 
 		private void buttonGo_Click(object sender, EventArgs e)
 		{
-			GoTo(this.textBoxUrlBar.Text);
+			this.GoTo(this.textBoxUrlBar.Text);
 		}
 
 		private void buttonSettings_Click(object sender, EventArgs e)
 		{
-			SettingForm form = new SettingForm();
+			var form = new SettingForm();
 
 			form.ShowDialog(this);
 		}
@@ -90,7 +91,7 @@ namespace orangeBrowser_Kai.Forms
 			{
 				if (!usingSearch)
 				{
-					GoTo(Formatter.Format.SPrintF(this.settings.GetValue<string>("General_SearchPage"), url), true);
+					this.GoTo(Formatter.Format.SPrintF(this.settings.GetValue<string>("General_SearchPage"), url), true);
 				}
 			}
 		}

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Configuration;
+
 using orangeBrowser_Kai.Properties;
 
 namespace orangeBrowser_Kai.util
@@ -37,16 +38,16 @@ namespace orangeBrowser_Kai.util
 
 		private void UpdateChangedValueList(string key)
 		{
-			object changedValue = GetValue<object>(key);
-			object originalValue = GetOriginalValue<object>(key);
+			object changedValue = this.GetValue<object>(key);
+			object originalValue = this.GetOriginalValue<object>(key);
 
 			if (changedValue.Equals(originalValue))
 			{
-				RemoveChangedValue(key);
+				this.RemoveChangedValue(key);
 			}
 			else
 			{
-				SetChangedValue(key);
+				this.SetChangedValue(key);
 			}
 		}
 
@@ -89,7 +90,7 @@ namespace orangeBrowser_Kai.util
 
 			foreach(SettingsProperty key in this.settings.Properties)
 			{
-				UpdateChangedValueList(key.Name);
+				this.UpdateChangedValueList(key.Name);
 			}
 		}
 
@@ -102,7 +103,7 @@ namespace orangeBrowser_Kai.util
 		{
 			this.settings[key] = value;
 
-			UpdateChangedValueList(key);
+			this.UpdateChangedValueList(key);
 		}
 
 		public T GetValue<T>(string key)

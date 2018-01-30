@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using orangeBrowser_Kai.Properties;
 
 namespace orangeBrowser_Kai.util.Downloaders
 {
@@ -51,12 +50,13 @@ namespace orangeBrowser_Kai.util.Downloaders
 
 		private void SetDownloaderArgs()
 		{
-			this.DownloaderArgs = new DownloaderArgs();
+			this.DownloaderArgs = new DownloaderArgs
+			{
+				Type = this.Type,
+				Status = this.Status
+			};
 
-			this.DownloaderArgs.Type = this.Type;
-			this.DownloaderArgs.Status = this.Status;
-
-			SetDownloadLambda();
+			this.SetDownloadLambda();
 		}
 
 		protected override void SetDownloadLambda()
@@ -70,7 +70,7 @@ namespace orangeBrowser_Kai.util.Downloaders
 
 			this.NicoDL.Completed += (sender, args) =>
 			{
-				ChangeStatus(DownloadStatus.Completed);
+				this.ChangeStatus(DownloadStatus.Completed);
 			};
 		}
 
@@ -88,7 +88,7 @@ namespace orangeBrowser_Kai.util.Downloaders
 
 		private int GetTimerInterval()
 		{
-			var now = DateTime.Now;
+			DateTime now = DateTime.Now;
 
 			// エコノミー扱いじゃなければ1秒後
 			if (!IsEconomyTime(now, this.settings.GetValue<bool>("Others_AmbiguousHoliday")))
