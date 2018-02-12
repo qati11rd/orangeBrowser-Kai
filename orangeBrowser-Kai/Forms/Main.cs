@@ -91,7 +91,9 @@ namespace orangeBrowser_Kai.Forms
 			{
 				if (!usingSearch)
 				{
-					this.GoTo(Formatter.Format.SPrintF(this.settings.GetValue<string>("General_SearchPage"), url), true);
+					string searchPage = this.settings.GetValue<string>("General_SearchPage");
+
+					this.GoTo(Formatter.Format.SPrintF(searchPage, url), true);
 				}
 			}
 		}

@@ -41,8 +41,13 @@ namespace orangeBrowser_Kai.util.Downloaders
 
 			if (success)
 			{
-				this.NicoDL.Login(this.settings.GetValue<string>("Nico_Mail"), this.settings.GetValue<string>("Nico_Password"));
-				this.NicoDL.Recode(this.DownloadUrl, this.settings.GetValue<string>("Nico_DefaultPath"), this.settings.GetValue<bool>("Nico_AllowLowMode"));
+				string mail = this.settings.GetValue<string>("Nico_Mail");
+				string password = this.settings.GetValue<string>("Nico_Password");
+				string path = this.settings.GetValue<string>("Nico_DefaultPath");
+				bool isAllowLowMode = this.settings.GetValue<bool>("Nico_AllowLowMode");
+
+				this.NicoDL.Login(mail, password);
+				this.NicoDL.Recode(this.DownloadUrl, path, isAllowLowMode);
 			}
 
 			return success;
@@ -89,9 +94,10 @@ namespace orangeBrowser_Kai.util.Downloaders
 		private int GetTimerInterval()
 		{
 			DateTime now = DateTime.Now;
+			bool isAmbiguousHoliday = this.settings.GetValue<bool>("Others_AmbiguousHoliday");
 
 			// エコノミー扱いじゃなければ1秒後
-			if (!IsEconomyTime(now, this.settings.GetValue<bool>("Others_AmbiguousHoliday")))
+			if (!IsEconomyTime(now, isAmbiguousHoliday))
 			{
 				return 1;
 			}
