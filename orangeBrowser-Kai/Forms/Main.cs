@@ -87,7 +87,7 @@ namespace orangeBrowser_Kai.Forms
 
 				this.textBoxUrlBar.Text = url;
 			}
-			catch (Exception)
+			catch (UriFormatException)
 			{
 				if (!usingSearch)
 				{
