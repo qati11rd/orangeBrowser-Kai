@@ -110,6 +110,7 @@
     <Compile Include="app\Settings.cs" />
     <Compile Include="util\Downloader.cs" />
     <Compile Include="util\Downloaders\Nico.cs" />
+    <Compile Include="util\Extensions\KeyValuePair.cs" />
     <Compile Include="util\Extensions\DateTime.cs" />
     <Compile Include="util\Extensions\String.cs" />
     <Compile Include="util\NicoDL.cs" />

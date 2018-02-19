@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
 
@@ -11,6 +12,25 @@ namespace orangeBrowser_Kai.Forms
 	public partial class Main : Form
 	{
 		const string HTTPS_ALTER_STR = "[#Secured#]";
+
+		readonly Dictionary<string, string> protocolReplaceMap = new Dictionary<string, string>()
+		{
+			{
+				"file://", "[*File*]"
+			},
+			{
+				"sftp://", "[=ScureFTP=]"
+			},
+			{
+				"ftp://", "[-FTP-]"
+			},
+			{
+				"https://", "[#Secured#]"
+			},
+			{
+				"http://", ""
+			}
+		};
 
 		SettingManager settings;
 
@@ -33,6 +53,8 @@ namespace orangeBrowser_Kai.Forms
 		private void webBrowser_Navigated(object sender, WebBrowserNavigatedEventArgs e)
 		{
 			this.textBoxUrlBar.Text = e.Url.AbsoluteUri;
+
+			this.HideHttp();
 		}
 
 		private void textBoxUrlBar_KeyPress(object sender, KeyPressEventArgs e)
@@ -104,13 +126,13 @@ namespace orangeBrowser_Kai.Forms
 			{
 				string text = this.textBoxUrlBar.Text;
 
-				if (text.StartsWith("https://"))
+				foreach(var protocolReplacePair in this.protocolReplaceMap)
 				{
-					this.textBoxUrlBar.Text = text.Replace("https://", HTTPS_ALTER_STR);
-				}
-				else
-				{
-					this.textBoxUrlBar.Text = text.Replace("http://", "");
+					if (text.StartsWith(protocolReplacePair.Key))
+					{
+						this.textBoxUrlBar.Text = text.Replace(protocolReplacePair, false);
+						break;
+					}
 				}
 			}
 		}
@@ -121,13 +143,13 @@ namespace orangeBrowser_Kai.Forms
 			{
 				string text = this.textBoxUrlBar.Text;
 
-				if (text.StartsWith(HTTPS_ALTER_STR))
+				foreach (var protocolReplacePair in this.protocolReplaceMap)
 				{
-					this.textBoxUrlBar.Text = text.Replace(HTTPS_ALTER_STR, "https://");
-				}
-				else if (!text.StartsWith("https://"))
-				{
-					this.textBoxUrlBar.Text = "http://" + text;
+					if (text.StartsWith(protocolReplacePair.Value))
+					{
+						this.textBoxUrlBar.Text = text.Replace(protocolReplacePair.Swap(), false);
+						break;
+					}
 				}
 			}
 		}
