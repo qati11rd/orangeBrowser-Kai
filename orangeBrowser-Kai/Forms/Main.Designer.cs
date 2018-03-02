@@ -60,6 +60,7 @@
 			this.textBoxUrlBar.Enter += new System.EventHandler(this.textBoxUrlBar_Enter);
 			this.textBoxUrlBar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxUrlBar_KeyPress);
 			this.textBoxUrlBar.Leave += new System.EventHandler(this.textBoxUrlBar_Leave);
+			this.textBoxUrlBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.textBoxUrlBar_MouseDown);
 			// 
 			// buttonGo
 			// 

@@ -70,6 +70,11 @@ namespace orangeBrowser_Kai.Forms
 			this.textBoxUrlBar.Text = this.textBoxUrlBar.Text.RemoveControls();
 		}
 
+		private void textBoxUrlBar_MouseDown(object sender, MouseEventArgs e)
+		{
+			this.ShowHttp();
+		}
+
 		private void webBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
 		{
 			this.textBoxUrlBar.DeselectAll();
@@ -108,6 +113,7 @@ namespace orangeBrowser_Kai.Forms
 				this.webBrowser.Url = new Uri(url);
 
 				this.textBoxUrlBar.Text = url;
+				this.textBoxUrlBar.DeselectAll();
 			}
 			catch (UriFormatException)
 			{
@@ -120,25 +126,44 @@ namespace orangeBrowser_Kai.Forms
 			}
 		}
 
+		private string GetCurrentTransferProtocol()
+		{
+			string text = this.textBoxUrlBar.Text;
+
+			foreach (var protocol in this.protocolReplaceMap.Keys)
+			{
+				if (text.StartsWith(protocol))
+				{
+					return protocol;
+				}
+			}
+
+			return null;
+		}
+
 		private void HideHttp()
 		{
 			if (this.settings.GetValue<bool>("General_HideHttp"))
 			{
 				string text = this.textBoxUrlBar.Text;
+				string protocol = this.GetCurrentTransferProtocol();
 
-				foreach(var protocolReplacePair in this.protocolReplaceMap)
+				if (protocol != null)
 				{
-					if (text.StartsWith(protocolReplacePair.Key))
-					{
-						this.textBoxUrlBar.Text = text.Replace(protocolReplacePair, false);
-						break;
-					}
+					string replaceStr = this.protocolReplaceMap[protocol];
+
+					this.textBoxUrlBar.Text = text.Replace(protocol, replaceStr);
 				}
 			}
 		}
 
 		private void ShowHttp()
 		{
+			if (this.GetCurrentTransferProtocol() != null)
+			{
+				return;
+			}
+
 			if (this.settings.GetValue<bool>("General_HideHttp"))
 			{
 				string text = this.textBoxUrlBar.Text;
