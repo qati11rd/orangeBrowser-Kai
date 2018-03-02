@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 
-using orangeBrowser_Kai.Properties;
+using orangeBrowser_Kai.settings;
 
 namespace orangeBrowser_Kai.util
 {
@@ -10,9 +11,15 @@ namespace orangeBrowser_Kai.util
 		private static SettingManager manager;
 		private static readonly object _lock = new object();
 
-		private Settings settings;
-		private Settings originalSettings;
-		private List<string> changedValueList = new List<string>();
+		public static readonly string Prefix = "Settings_";
+		public static readonly string PrefixKey = "Key_";
+
+		private List<string> prefixList;
+
+		Dictionary<string, ApplicationSettingsBase> settingsMap;
+		Dictionary<string, ApplicationSettingsBase> originalSettingsMap;
+
+		private List<string> changedValueList;
 
 		public static SettingManager GetInstance()
 		{
@@ -29,11 +36,32 @@ namespace orangeBrowser_Kai.util
 
 		private SettingManager()
 		{
-			this.settings = new Settings();
-			this.settings.Reload();
+			this.Initialize();
+		}
 
-			this.originalSettings = new Settings();
-			this.originalSettings.Reload();
+		private void Initialize()
+		{
+			this.prefixList = new List<string>();
+			this.settingsMap = new Dictionary<string, ApplicationSettingsBase>();
+			this.originalSettingsMap = new Dictionary<string, ApplicationSettingsBase>();
+
+			this.AddSettingMap<Settings>(Prefix);
+			this.AddSettingMap<ShortCutKey>(PrefixKey);
+
+			this.changedValueList = new List<string>();
+		}
+
+		private void AddSettingMap<T>(string prefix) where T : ApplicationSettingsBase
+		{
+			this.prefixList.Add(prefix);
+
+			var settings = Activator.CreateInstance<T>();
+			settings.Reload();
+			this.settingsMap.Add(prefix, settings);
+
+			var originalSettings = Activator.CreateInstance<T>();
+			originalSettings.Reload();
+			this.originalSettingsMap.Add(prefix, originalSettings);
 		}
 
 		private void UpdateChangedValueList(string key)
@@ -69,28 +97,39 @@ namespace orangeBrowser_Kai.util
 
 		public void Save()
 		{
-			this.settings.Save();
-			this.originalSettings.Reload();
+			foreach(var settings in this.settingsMap.Values)
+			{
+				settings.Save();
+			}
+
+			foreach(var originalSettings in this.originalSettingsMap.Values)
+			{
+				originalSettings.Reload();
+			}
 
 			this.changedValueList.Clear();
 		}
 
 		public void DiscardChanges()
 		{
-			this.settings.Reload();
+			foreach(var settings in this.settingsMap.Values)
+			{
+				settings.Reload();
+			}
 
-			this.settings = new Settings();
-
-			this.changedValueList.Clear();
+			Initialize();
 		}
 
 		public void Reset()
 		{
-			this.settings.Reset();
-
-			foreach(SettingsProperty key in this.settings.Properties)
+			foreach(var settings in this.settingsMap.Values)
 			{
-				this.UpdateChangedValueList(key.Name);
+				settings.Reset();
+
+				foreach(SettingsProperty key in settings.Properties)
+				{
+					this.UpdateChangedValueList(key.Name);
+				}
 			}
 		}
 
@@ -99,21 +138,46 @@ namespace orangeBrowser_Kai.util
 			return this.changedValueList.Count != 0;
 		}
 
+		private string GetPrefix(string key)
+		{
+			foreach(var prefix in this.prefixList)
+			{
+				if (key.StartsWith(prefix))
+				{
+					return prefix;
+				}
+			}
+
+			return null;
+		}
+
 		public void SetValue<T>(string key, T value)
 		{
-			this.settings[key] = value;
+			var prefix = this.GetPrefix(key);
+
+			var settingKey = key.Remove(0, prefix.Length);
+
+			this.settingsMap[prefix][settingKey] = value;
 
 			this.UpdateChangedValueList(key);
 		}
 
 		public T GetValue<T>(string key)
 		{
-			return (T)this.settings[key];
+			var prefix = this.GetPrefix(key);
+
+			var settingKey = key.Remove(0, prefix.Length);
+
+			return (T)this.settingsMap[prefix][settingKey];
 		}
 
 		private T GetOriginalValue<T>(string key)
 		{
-			return (T)this.originalSettings[key];
+			var prefix = this.GetPrefix(key);
+
+			var settingKey = key.Remove(0, prefix.Length);
+
+			return (T)this.originalSettingsMap[prefix][settingKey];
 		}
 	}
 }

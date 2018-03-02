@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace orangeBrowser_Kai.Properties {
+namespace orangeBrowser_Kai.settings {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -61,49 +61,49 @@ namespace orangeBrowser_Kai.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://www.google.co.jp/")]
-        public string General_HomePage {
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool Window_VerifyClose {
             get {
-                return ((string)(this["General_HomePage"]));
+                return ((bool)(this["Window_VerifyClose"]));
             }
             set {
-                this["General_HomePage"] = value;
+                this["Window_VerifyClose"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://www.google.co.jp/")]
+        public string Browser_HomePage {
+            get {
+                return ((string)(this["Browser_HomePage"]));
+            }
+            set {
+                this["Browser_HomePage"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("http://www.nicovideo.jp/search/%s")]
-        public string General_SearchPage {
+        public string Browser_SearchPage {
             get {
-                return ((string)(this["General_SearchPage"]));
+                return ((string)(this["Browser_SearchPage"]));
             }
             set {
-                this["General_SearchPage"] = value;
+                this["Browser_SearchPage"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool General_HideHttp {
+        public bool Browser_HideHttp {
             get {
-                return ((bool)(this["General_HideHttp"]));
+                return ((bool)(this["Browser_HideHttp"]));
             }
             set {
-                this["General_HideHttp"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool General_VerifyClose {
-            get {
-                return ((bool)(this["General_VerifyClose"]));
-            }
-            set {
-                this["General_VerifyClose"] = value;
+                this["Browser_HideHttp"] = value;
             }
         }
         

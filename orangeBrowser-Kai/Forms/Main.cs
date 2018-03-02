@@ -45,9 +45,9 @@ namespace orangeBrowser_Kai.Forms
 		{
 			this.settings = SettingManager.GetInstance();
 
-			this.Opacity = (double)this.settings.GetValue<decimal>("Window_Opacity") / 100;
+			this.Opacity = (double)this.settings.GetValue<decimal>(SettingManager.Prefix + "Window_Opacity") / 100;
 
-			this.GoTo(this.settings.GetValue<string>("General_HomePage"));
+			this.GoTo(this.settings.GetValue<string>(SettingManager.Prefix + "Browser_HomePage"));
 		}
 
 		private void webBrowser_Navigated(object sender, WebBrowserNavigatedEventArgs e)
@@ -80,6 +80,11 @@ namespace orangeBrowser_Kai.Forms
 			this.textBoxUrlBar.DeselectAll();
 
 			this.UpdateTitle();
+		}
+
+		private void Main_KeyDown(object sender, PreviewKeyDownEventArgs e)
+		{
+			KeyTrigger_Main(e);
 		}
 
 		private void textBoxUrlBar_Enter(object sender, EventArgs e)
@@ -119,7 +124,7 @@ namespace orangeBrowser_Kai.Forms
 			{
 				if (!usingSearch)
 				{
-					string searchPage = this.settings.GetValue<string>("General_SearchPage");
+					string searchPage = this.settings.GetValue<string>(SettingManager.Prefix + "Browser_SearchPage");
 
 					this.GoTo(Formatter.Format.SPrintF(searchPage, url), true);
 				}
@@ -143,7 +148,7 @@ namespace orangeBrowser_Kai.Forms
 
 		private void HideHttp()
 		{
-			if (this.settings.GetValue<bool>("General_HideHttp"))
+			if (this.settings.GetValue<bool>(SettingManager.Prefix + "Browser_HideHttp"))
 			{
 				string text = this.textBoxUrlBar.Text;
 				string protocol = this.GetCurrentTransferProtocol();
@@ -164,7 +169,7 @@ namespace orangeBrowser_Kai.Forms
 				return;
 			}
 
-			if (this.settings.GetValue<bool>("General_HideHttp"))
+			if (this.settings.GetValue<bool>(SettingManager.Prefix + "Browser_HideHttp"))
 			{
 				string text = this.textBoxUrlBar.Text;
 

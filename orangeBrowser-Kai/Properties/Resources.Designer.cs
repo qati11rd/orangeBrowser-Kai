@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace orangeBrowser_Kai.Properties {
+namespace orangeBrowser_Kai.settings {
     using System;
     
     

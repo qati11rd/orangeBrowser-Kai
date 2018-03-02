@@ -1,0 +1,36 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="orangeBrowser_Kai.settings" GeneratedClassName="ShortCutKey">
+  <Profiles />
+  <Settings>
+    <Setting Name="Window_Close" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">Ctrl+W</Value>
+    </Setting>
+    <Setting Name="Window_Open_Settings" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">F12</Value>
+    </Setting>
+    <Setting Name="Window_Open_DownloadStatus" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">F2</Value>
+    </Setting>
+    <Setting Name="UrlBar_SelectAll" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">F6</Value>
+    </Setting>
+    <Setting Name="UrlBar_Paste" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">F8</Value>
+    </Setting>
+    <Setting Name="Browser_Reload" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">Ctrl+R</Value>
+    </Setting>
+    <Setting Name="Browser_Home" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">Alt+Home</Value>
+    </Setting>
+    <Setting Name="Alert_Time" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">Alt+T</Value>
+    </Setting>
+    <Setting Name="Nico_Download" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">Ctrl+D</Value>
+    </Setting>
+    <Setting Name="Nico_Reserve" Type="System.Windows.Forms.Keys" Scope="User">
+      <Value Profile="(Default)">Ctrl+Shift+D</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

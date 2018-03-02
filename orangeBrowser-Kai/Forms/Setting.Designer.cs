@@ -95,7 +95,7 @@
 			this.checkBoxGeneralHideHttp.Name = "checkBoxGeneralHideHttp";
 			this.checkBoxGeneralHideHttp.Size = new System.Drawing.Size(86, 20);
 			this.checkBoxGeneralHideHttp.TabIndex = 4;
-			this.checkBoxGeneralHideHttp.Tag = "General_HideHttp";
+			this.checkBoxGeneralHideHttp.Tag = "Settings_Browser_HideHttp";
 			this.checkBoxGeneralHideHttp.Text = "HideHttp";
 			this.checkBoxGeneralHideHttp.UseVisualStyleBackColor = true;
 			this.checkBoxGeneralHideHttp.CheckedChanged += new System.EventHandler(this.CheckBox_CheckedChanged);
@@ -109,7 +109,7 @@
 			this.textBoxGeneralSearchPage.Name = "textBoxGeneralSearchPage";
 			this.textBoxGeneralSearchPage.Size = new System.Drawing.Size(401, 23);
 			this.textBoxGeneralSearchPage.TabIndex = 3;
-			this.textBoxGeneralSearchPage.Tag = "General_SearchPage";
+			this.textBoxGeneralSearchPage.Tag = "Settings_Browser_SearchPage";
 			this.textBoxGeneralSearchPage.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
 			// 
 			// labelGeneralSearchPage
@@ -131,7 +131,7 @@
 			this.textBoxGeneralHomePage.Name = "textBoxGeneralHomePage";
 			this.textBoxGeneralHomePage.Size = new System.Drawing.Size(401, 23);
 			this.textBoxGeneralHomePage.TabIndex = 1;
-			this.textBoxGeneralHomePage.Tag = "General_HomePage";
+			this.textBoxGeneralHomePage.Tag = "Settings_Browser_HomePage";
 			this.textBoxGeneralHomePage.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
 			// 
 			// labelGeneralHomePage
@@ -168,7 +168,7 @@
 			this.checkBoxNicoAllowLowMode.Name = "checkBoxNicoAllowLowMode";
 			this.checkBoxNicoAllowLowMode.Size = new System.Drawing.Size(124, 20);
 			this.checkBoxNicoAllowLowMode.TabIndex = 7;
-			this.checkBoxNicoAllowLowMode.Tag = "Nico_AllowLowMode";
+			this.checkBoxNicoAllowLowMode.Tag = "Settings_Nico_AllowLowMode";
 			this.checkBoxNicoAllowLowMode.Text = "AllowLowMode";
 			this.checkBoxNicoAllowLowMode.UseVisualStyleBackColor = true;
 			// 
@@ -193,7 +193,7 @@
 			this.textBoxNicoPassword.PasswordChar = '*';
 			this.textBoxNicoPassword.Size = new System.Drawing.Size(320, 23);
 			this.textBoxNicoPassword.TabIndex = 5;
-			this.textBoxNicoPassword.Tag = "Nico_Password";
+			this.textBoxNicoPassword.Tag = "Settings_Nico_Password";
 			this.textBoxNicoPassword.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
 			// 
 			// labelNicoPassword
@@ -216,7 +216,7 @@
 			this.textBoxNicoMail.Name = "textBoxNicoMail";
 			this.textBoxNicoMail.Size = new System.Drawing.Size(401, 23);
 			this.textBoxNicoMail.TabIndex = 3;
-			this.textBoxNicoMail.Tag = "Nico_Mail";
+			this.textBoxNicoMail.Tag = "Settings_Nico_Mail";
 			this.textBoxNicoMail.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
 			// 
 			// labelNicoMail
@@ -277,7 +277,7 @@
 			this.numericUpDownWindowOpacity.Name = "numericUpDownWindowOpacity";
 			this.numericUpDownWindowOpacity.Size = new System.Drawing.Size(126, 23);
 			this.numericUpDownWindowOpacity.TabIndex = 0;
-			this.numericUpDownWindowOpacity.Tag = "Window_Opacity";
+			this.numericUpDownWindowOpacity.Tag = "Settings_Window_Opacity";
 			this.numericUpDownWindowOpacity.ValueChanged += new System.EventHandler(this.NumericUpDown_ValueChanged);
 			// 
 			// buttonApply

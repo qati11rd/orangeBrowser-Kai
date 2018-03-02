@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="orangeBrowser_Kai.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="orangeBrowser_Kai.settings" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
     <Setting Name="Window_Point" Type="System.Drawing.Point" Scope="User">
@@ -11,16 +11,16 @@
     <Setting Name="Window_Opacity" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">100</Value>
     </Setting>
-    <Setting Name="General_HomePage" Type="System.String" Scope="User">
-      <Value Profile="(Default)">https://www.google.co.jp/</Value>
-    </Setting>
-    <Setting Name="General_SearchPage" Type="System.String" Scope="User">
-      <Value Profile="(Default)">http://www.nicovideo.jp/search/%s</Value>
-    </Setting>
-    <Setting Name="General_HideHttp" Type="System.Boolean" Scope="User">
+    <Setting Name="Window_VerifyClose" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="General_VerifyClose" Type="System.Boolean" Scope="User">
+    <Setting Name="Browser_HomePage" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://www.google.co.jp/</Value>
+    </Setting>
+    <Setting Name="Browser_SearchPage" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://www.nicovideo.jp/search/%s</Value>
+    </Setting>
+    <Setting Name="Browser_HideHttp" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="Nico_Mail" Type="System.String" Scope="User">
