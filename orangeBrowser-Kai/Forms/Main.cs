@@ -58,6 +58,19 @@ namespace orangeBrowser_Kai.Forms
 			this.GoTo(this.settings.GetValue<string>(SettingManager.Prefix + "Browser_HomePage"));
 		}
 
+		private void Main_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			if (this.settings.GetValue<bool>(SettingManager.Prefix + "Window_VerifyClose"))
+			{
+				DialogResult result = MessageBox.Show("閉じますか？", "確認", MessageBoxButtons.OKCancel);
+
+				if (result != DialogResult.OK)
+				{
+					e.Cancel = true;
+				}
+			}
+		}
+
 		private void Main_ResizeEnd(object sender, EventArgs e)
 		{
 			if (this.WindowState == FormWindowState.Normal)
