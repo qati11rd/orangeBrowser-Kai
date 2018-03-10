@@ -2,11 +2,8 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="orangeBrowser_Kai.settings" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="Window_Point" Type="System.Drawing.Point" Scope="User">
-      <Value Profile="(Default)">0, 0</Value>
-    </Setting>
-    <Setting Name="Window_Size" Type="System.Drawing.Size" Scope="User">
-      <Value Profile="(Default)">1200, 800</Value>
+    <Setting Name="Window_Rect" Type="System.Drawing.Rectangle" Scope="User">
+      <Value Profile="(Default)">0, 0, 0, 0</Value>
     </Setting>
     <Setting Name="Window_Opacity" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">100</Value>

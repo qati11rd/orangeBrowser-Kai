@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.Windows.Forms;
 
 using orangeBrowser_Kai.util;
@@ -45,9 +46,26 @@ namespace orangeBrowser_Kai.Forms
 		{
 			this.settings = SettingManager.GetInstance();
 
+			Rectangle rect = this.settings.GetValue<Rectangle>(SettingManager.Prefix + "Window_Rect");
+
+			if (!rect.IsEmpty)
+			{
+				this.SetBounds(rect.X, rect.Y, rect.Width, rect.Height);
+			}
+
 			this.Opacity = (double)this.settings.GetValue<decimal>(SettingManager.Prefix + "Window_Opacity") / 100;
 
 			this.GoTo(this.settings.GetValue<string>(SettingManager.Prefix + "Browser_HomePage"));
+		}
+
+		private void Main_ResizeEnd(object sender, EventArgs e)
+		{
+			if (this.WindowState == FormWindowState.Normal)
+			{
+				this.settings.SetValue(SettingManager.Prefix + "Window_Rect", this.DesktopBounds);
+
+				this.settings.Save();
+			}
 		}
 
 		private void webBrowser_Navigated(object sender, WebBrowserNavigatedEventArgs e)

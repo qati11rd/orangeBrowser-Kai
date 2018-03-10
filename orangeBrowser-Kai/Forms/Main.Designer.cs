@@ -101,6 +101,7 @@
 			this.Controls.Add(this.buttonSettings);
 			this.Name = "Main";
 			this.Text = "orangeBrowser-Kai";
+			this.ResizeEnd += new System.EventHandler(this.Main_ResizeEnd);
 			this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.Main_KeyDown);
 			this.ResumeLayout(false);
 			this.PerformLayout();
