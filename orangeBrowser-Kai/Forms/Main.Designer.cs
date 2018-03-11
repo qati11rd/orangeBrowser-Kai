@@ -43,7 +43,7 @@
 			this.buttonSettings.Text = "Settings";
 			this.buttonSettings.UseVisualStyleBackColor = true;
 			this.buttonSettings.Click += new System.EventHandler(this.buttonSettings_Click);
-			this.buttonSettings.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.Main_KeyDown);
+			this.buttonSettings.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.Main_PreviewKeyDown);
 			// 
 			// textBoxUrlBar
 			// 
@@ -73,7 +73,7 @@
 			this.buttonGo.Text = "Go";
 			this.buttonGo.UseVisualStyleBackColor = true;
 			this.buttonGo.Click += new System.EventHandler(this.buttonGo_Click);
-			this.buttonGo.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.Main_KeyDown);
+			this.buttonGo.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.Main_PreviewKeyDown);
 			// 
 			// webBrowser
 			// 
@@ -88,7 +88,7 @@
 			this.webBrowser.Url = new System.Uri("about:blank", System.UriKind.Absolute);
 			this.webBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser_DocumentCompleted);
 			this.webBrowser.Navigated += new System.Windows.Forms.WebBrowserNavigatedEventHandler(this.webBrowser_Navigated);
-			this.webBrowser.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.Main_KeyDown);
+			this.webBrowser.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.Main_PreviewKeyDown);
 			// 
 			// Main
 			// 
@@ -103,7 +103,7 @@
 			this.Text = "orangeBrowser-Kai";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
 			this.ResizeEnd += new System.EventHandler(this.Main_ResizeEnd);
-			this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.Main_KeyDown);
+			this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.Main_PreviewKeyDown);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

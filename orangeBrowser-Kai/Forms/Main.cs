@@ -113,7 +113,7 @@ namespace orangeBrowser_Kai.Forms
 			this.UpdateTitle();
 		}
 
-		private void Main_KeyDown(object sender, PreviewKeyDownEventArgs e)
+		private void Main_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
 		{
 			KeyTrigger_Main(e);
 		}
