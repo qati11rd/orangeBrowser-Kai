@@ -1,5 +1,4 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using CSharp.Japanese.Kanaxs;
 
 namespace orangeBrowser_Kai.util

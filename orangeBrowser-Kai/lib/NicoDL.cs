@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
-using System.Runtime.InteropServices;
 using System.Security;
 using System.Text;
 using System.Xml;
 
+using orangeBrowser_Kai.util;
+
 // 元ソース uri: http://d.hatena.ne.jp/fezg00/20111115/1321348924
 
-namespace orangeBrowser_Kai.util
+namespace orangeBrowser_Kai.lib
 {
 	enum Mode
 	{
@@ -64,31 +65,9 @@ namespace orangeBrowser_Kai.util
 		{
 		}
 
-		string SecureStringToString(SecureString secureString)
-		{
-			var pointer = IntPtr.Zero;
-
-			try
-			{
-				var buffer = new char[secureString.Length];
-
-				pointer = Marshal.SecureStringToCoTaskMemUnicode(secureString);
-				Marshal.Copy(pointer, buffer, 0, buffer.Length);
-
-				return new string(buffer);
-			}
-			finally
-			{
-				if (pointer != IntPtr.Zero)
-				{
-					Marshal.ZeroFreeCoTaskMemUnicode(pointer);
-				}
-			}
-		}
-
 		public void Login(string mail, SecureString password)
 		{
-			this.Login(mail, SecureStringToString(password));
+			this.Login(mail, password.ToString(true));
 		}
 
 		public void Login(string mail, string password)
@@ -305,35 +284,6 @@ namespace orangeBrowser_Kai.util
 			if (FilePathDecided != null)
 			{
 				FilePathDecided(this, args);
-			}
-		}
-	}
-
-	static class Extentions
-	{
-		static public T GetLastContents<T>(this T[] array)
-		{
-			return array[array.Length - 1];
-		}
-
-		static public void ForEach<T>(this T[] array, Action<T> action)
-		{
-			Array.ForEach(array, action);
-		}
-
-		static public string ReadToEnd(this WebResponse response, Encoding encoding)
-		{
-			using (var reader = new StreamReader(response.GetResponseStream(), encoding))
-			{
-				return reader.ReadToEnd();
-			}
-		}
-
-		static public string ReadToEnd(this WebResponse response)
-		{
-			using (var reader = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
-			{
-				return reader.ReadToEnd();
 			}
 		}
 	}

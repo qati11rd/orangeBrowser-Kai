@@ -126,8 +126,12 @@
     <Compile Include="util\Downloaders\Nico.cs" />
     <Compile Include="util\Extensions\KeyValuePair.cs" />
     <Compile Include="util\Extensions\DateTime.cs" />
+    <Compile Include="util\Extensions\Array.cs" />
+    <Compile Include="util\Extensions\SecureString.cs" />
+    <Compile Include="util\SecureStringConverter.cs" />
+    <Compile Include="util\Extensions\WebResponse.cs" />
     <Compile Include="util\Extensions\String.cs" />
-    <Compile Include="util\NicoDL.cs" />
+    <Compile Include="lib\NicoDL.cs" />
     <Compile Include="util\SettingManager.cs" />
     <EmbeddedResource Include="Forms\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
