@@ -122,8 +122,8 @@
     <Compile Include="lib\kanaxs_ex-1.0.2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="settings\Settings.cs" />
-    <Compile Include="util\Downloader.cs" />
-    <Compile Include="util\Downloaders\Nico.cs" />
+    <Compile Include="downloads\Downloader.cs" />
+    <Compile Include="downloads\Downloaders\Nico.cs" />
     <Compile Include="util\Extensions\KeyValuePair.cs" />
     <Compile Include="util\Extensions\DateTime.cs" />
     <Compile Include="util\Extensions\Array.cs" />

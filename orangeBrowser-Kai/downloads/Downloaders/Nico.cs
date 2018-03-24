@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace orangeBrowser_Kai.util.Downloaders
+using orangeBrowser_Kai.lib;
+using orangeBrowser_Kai.util;
+
+namespace orangeBrowser_Kai.downloads.Downloaders
 {
 	class Nico : Downloader
 	{

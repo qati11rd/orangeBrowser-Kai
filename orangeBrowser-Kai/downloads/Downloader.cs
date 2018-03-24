@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace orangeBrowser_Kai.util
+namespace orangeBrowser_Kai.downloads
 {
 	public enum DownloadType
 	{
