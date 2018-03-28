@@ -13,6 +13,7 @@ namespace orangeBrowser_Kai.util
 
 		public static readonly string Prefix = "Settings_";
 		public static readonly string PrefixKey = "Key_";
+		public static readonly string PrefixPath = "Path_";
 
 		private List<string> prefixList;
 

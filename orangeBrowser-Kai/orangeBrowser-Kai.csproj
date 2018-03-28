@@ -89,6 +89,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="downloads\PathSetting.cs" />
+    <Compile Include="downloads\PathSettingManager.cs" />
+    <Compile Include="downloads\PathSettings\Nico.cs" />
+    <Compile Include="downloads\PathSettings\nico\Tag.cs" />
+    <Compile Include="downloads\PathSettings\nico\Title.cs" />
     <Compile Include="Forms\Main.Trigger.Key.cs">
       <SubType>Form</SubType>
     </Compile>
